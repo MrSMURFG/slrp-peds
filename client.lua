@@ -1,7 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('slrp-peds:client:SetPedModel')
-AddEventHandler('slrp-peds:client:SetPedModel', function(model)
+RegisterNetEvent('slrp-peds:client:SetPedModel', function(model)
     local pedModel = GetHashKey(model)
     if IsModelValid(pedModel) then
         RequestModel(pedModel)
