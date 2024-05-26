@@ -1,8 +1,8 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Event to set a ped model
-RegisterNetEvent('slrp-peds:server:SetPedModel')
-AddEventHandler('slrp-peds:server:SetPedModel', function(playerId, model)
+RegisterNetEvent('slrp-peds:server:SetPedMode')
+AddEventHandler('slrp-peds:server:SetPedMode', function(playerId, model)
     local src = source
     local player = QBCore.Functions.GetPlayer(playerId)
     local modelHash = GetHashKey(model)
@@ -20,7 +20,7 @@ AddEventHandler('slrp-peds:server:SetPedModel', function(playerId, model)
     end
 
     if player then
-        TriggerClientEvent("slrp-peds:client:SetPedModel", player.PlayerData.source, model)
+        TriggerClientEvent("slrp-peds:client:SetPedMode", player.PlayerData.source, model)
     else
         TriggerClientEvent("chatMessage", src, "^1Player not found.")
         print("Player not found with ID: " .. tostring(playerId))
@@ -28,8 +28,8 @@ AddEventHandler('slrp-peds:server:SetPedModel', function(playerId, model)
 end)
 
 -- Event handler on the client side to actually set the ped model
-RegisterNetEvent('slrp-peds:client:SetPedModel')
-AddEventHandler('slrp-peds:client:SetPedModel', function(model)
+RegisterNetEvent('slrp-peds:client:SetPedMode')
+AddEventHandler('slrp-peds:client:SetPedMode', function(model)
     local modelHash = GetHashKey(model)
 
     if not model or model == "" then
@@ -79,5 +79,5 @@ QBCore.Commands.Add('setped', "Change player ped model", {{name = "playerId", he
         return
     end
 
-    TriggerEvent("slrp-peds:server:SetPedModel", playerId, model)
+    TriggerEvent("slrp-peds:server:SetPedMode", playerId, model)
 end, 'admin')
