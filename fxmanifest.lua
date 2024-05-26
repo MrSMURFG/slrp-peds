@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'Mr.SMURF'
-description 'Set ped models'
+description 'Set ped model'
 version '1.0.0'
 
 client_scripts {
